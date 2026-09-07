@@ -1,59 +1,90 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Request a Quote – Cemetery Revival NC</title> <link rel="stylesheet" href="styles.css"> <style> body { font-family: 'Georgia', serif; background-color: #f8f8f8; color: #333; margin: 0; padding: 0; } header, footer { background-color: #2e6e4e; color: white; text-align: center; padding: 1rem 0; } .wrap { max-width: 800px; margin: 0 auto; padding: 2rem; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; } h2 { text-align: center; color: #2e6e4e; } label { font-weight: bold; } input, textarea, button { width: 100%; padding: 0.5rem; margin-top: 0.25rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; } button.btn { background-color: #2e6e4e; color: white; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; cursor: pointer; border-radius: 4px; transition: background-color 0.3s ease; } button.btn:hover { background-color: #24563c; } .weather-options { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; } .weather-options label { cursor: pointer; } .weather-img { width: 180px; height: auto; border-radius: 6px; border: 2px solid #ccc; transition: border-color 0.2s ease; } .weather-options input[type="radio"]:checked + .weather-img { border-color: #2e6e4e; } </style> </head> <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Quote – Cemetery Revival NC</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f8f8f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #2e6e4e;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+      color: #2e6e4e;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    button.btn {
+      background-color: #2e6e4e;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    button.btn:hover {
+      background-color: #24563c;
+    }
+    .weather-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .weather-options label {
+      cursor: pointer;
+    }
+    .weather-img {
+      width: 180px;
+      height: auto;
+      border-radius: 6px;
+      border: 2px solid #ccc;
+      transition: border-color 0.2s ease;
+    }
+    .weather-options input[type="radio"]:checked + .weather-img {
+      border-color: #2e6e4e;
+    }
+    .error-message {
+      color: #b30000;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
 
-<header> <h1>Cemetery Revival NC</h1> <p>Headstone & Monument Cleaning Services</p> </header>
-
-<section class="quote-form"> <div class="wrap"> <h2>Get a Free Estimate</h2>
-
-<form action="https://formspree.io/f/xzebjjzk" method="POST" enctype="multipart/form-data">
-
-  <label for="name">Your Name</label>
-  <input type="text" id="name" name="customer_name" required>
-
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone" name="customer_phone" required>
-
-  <label for="inscription">Names & Dates on the Stone</label>
-  <textarea id="inscription" name="stone_inscription" rows="3" placeholder="Example: JOHN DOE • JAN 3, 1940 – MAY 12, 2010"></textarea>
-
-  <label for="cemetery">Cemetery Location</label>
-  <input type="text" id="cemetery" name="cemetery_location" placeholder="Cemetery name or address">
-
-  <label for="photo">Upload a Photo of the Stone (if applicable)</label>
-  <input type="file" id="photo" name="stone_photo" accept="image/*">
-
-  <label>Stone condition</label>
-  <p>Select the photo that most closely matches the condition of the stone:</p>
-
-  <div class="weather-options">
-    <label>
-      <input type="radio" name="weather_level" value="light">
-      <img src="assets/weather-light.jpg" alt="Light weathering" class="weather-img">
-    </label>
-
-    <label>
-      <input type="radio" name="weather_level" value="medium">
-      <img src="assets/weather-medium.jpg" alt="Medium weathering" class="weather-img">
-    </label>
-
-    <label>
-      <input type="radio" name="weather_level" value="heavy">
-      <img src="assets/weather-heavy.jpg" alt="Heavy weathering" class="weather-img">
-    </label>
-
-    <label>
-      <input type="radio" name="weather_level" value="extreme">
-      <img src="assets/weather-extreme.jpg" alt="Extreme weathering" class="weather-img">
-    </label>
-  </div>
-
-  <label for="details">Additional Details</label>
-  <textarea id="details" name="additional_details" rows="4" placeholder="Anything else you'd like me to know"></textarea>
-
-  <button type="submit" class="btn">Send Quote Request →</button>
-</form>
-
-</div> </section>
-
-<footer> <p>© 2026 Cemetery Revival NC — Serving Surry & Wilkes Counties</p> </footer>
-
-</body> </html>
+<header>
+  <h1>Cemetery Revival NC</h1>
+  <p>Headstone
