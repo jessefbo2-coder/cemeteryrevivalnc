@@ -64,22 +64,51 @@
     }
     .weather-options label {
       cursor: pointer;
+      display: inline-block;
     }
     .weather-img {
       width: 180px;
       height: auto;
       border-radius: 6px;
       border: 2px solid #ccc;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      display: block;
+    }
+    .weather-options input[type="radio"] {
+      display: none;
     }
     .weather-options input[type="radio"]:checked + .weather-img {
       border-color: #2e6e4e;
+      transform: scale(1.08);
     }
     .error-message {
       color: #b30000;
       font-weight: bold;
       margin-bottom: 1rem;
       display: none;
+    }
+    .success-message {
+      display: none;
+      text-align: center;
+    }
+    .success-message h3 {
+      color: #2e6e4e;
+    }
+    .back-home {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .back-home a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #2e6e4e;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .back-home a:hover {
+      background-color: #24563c;
     }
   </style>
 </head>
@@ -95,7 +124,15 @@
     <h2>Get a Free Estimate</h2>
 
     <div class="error-message" id="errorMessage">
-      Please upload a photo OR select a weathering level.
+      Please upload a photo OR select a stone condition image.
+    </div>
+
+    <div class="success-message" id="successMessage">
+      <h3>Thank you—your quote request has been sent.</h3>
+      <p>I’ll review your information and get back to you as soon as possible.</p>
+      <div class="back-home">
+        <a href="index.html">Back to Home</a>
+      </div>
     </div>
 
     <form id="quoteForm" action="https://formspree.io/f/xzebjjzk" method="POST" enctype="multipart/form-data">
@@ -146,6 +183,10 @@
       <button type="submit" class="btn">Send Quote Request →</button>
     </form>
 
+    <div class="back-home">
+      <a href="index.html">Back to Home</a>
+    </div>
+
   </div>
 </section>
 
@@ -154,15 +195,48 @@
 </footer>
 
 <script>
-  document.getElementById('quoteForm').addEventListener('submit', function(event) {
+  const form = document.getElementById('quoteForm');
+  const errorMessage = document.getElementById('errorMessage');
+  const successMessage = document.getElementById('successMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // always handle manually
+
+    errorMessage.style.display = 'none';
+
     const photo = document.getElementById('photo').value;
     const weatherSelected = document.querySelector('input[name="weather_level"]:checked');
 
+    // Require at least one: photo OR weather selection
     if (!photo && !weatherSelected) {
-      event.preventDefault();
-      document.getElementById('errorMessage').style.display = 'block';
+      errorMessage.style.display = 'block';
       window.scrollTo(0, 0);
+      return;
     }
+
+    // If validation passes, send to Formspree via fetch
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(function(response) {
+      if (response.ok) {
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+        window.scrollTo(0, 0);
+      } else {
+        errorMessage.textContent = 'Something went wrong sending your request. Please try again.';
+        errorMessage.style.display = 'block';
+        window.scrollTo(0, 0);
+      }
+    }).catch(function() {
+      errorMessage.textContent = 'Network error. Please try again.';
+      errorMessage.style.display = 'block';
+      window.scrollTo(0, 0);
+    });
   });
 </script>
 
