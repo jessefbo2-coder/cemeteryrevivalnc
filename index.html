@@ -819,7 +819,8 @@ footer{
 
       <div class="details">
         <div>☎ &nbsp;<a href="tel:+13368189140">(336) 818-9140</a></div>
-        <div>✉ &nbsp;<a href="mailto:cemeteryrevivalnc@gmail.com">cemeteryrevivalnc@gmail.com</a></div>
+        <div>✉ &nbsp;<a id="emailLink" href="#">cemeteryrevivalnc@gmail.com</a>
+</div>
       </div>
     </div>
 
@@ -886,6 +887,15 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 fadeElements.forEach(el => observer.observe(el));
+
+  // DESKTOP EMAIL → OPEN GMAIL COMPOSE
+const emailLink = document.getElementById('emailLink');
+
+emailLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  const gmailURL = "https://mail.google.com/mail/?view=cm&fs=1&to=cemeteryrevivalnc@gmail.com";
+  window.open(gmailURL, "_blank");
+});
 </script>
 
 </body>
