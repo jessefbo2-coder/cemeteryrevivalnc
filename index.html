@@ -1,932 +1,282 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Cemetery Revival NC provides respectful headstone and monument cleaning in Surry and Wilkes County, North Carolina.">
-<title>Cemetery Revival NC | Headstone & Monument Cleaning</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --cream:#f0ebdf;--light:#f8f4e9;--green:#21442f;--deep:#10281b;
-  --gold:#c79b45;--sage:#dfe6d2;--text:#20352a;--muted:#526057;
-  --line:#d5d0c2;--serif:"Fraunces",Georgia,serif;--sans:"Work Sans",Arial,sans-serif;
-  --max:1220px;
-}
-
-/* GLOBAL */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--cream);
-  color:var(--text);
-  font-family:var(--sans);
-  line-height:1.35;
-}
-
-a{text-decoration:none;color:inherit}
-
-.wrap{
-  width:min(var(--max),100%);
-  margin:auto;
-  padding:0 26px;
-}
-
-h1,h2,h3{
-  font-family:var(--serif);
-  font-weight:600;
-  margin:0;
-}
-
-.kicker{
-  margin:0 0 5px;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  font-size:.72rem;
-  font-weight:700;
-  color:var(--green);
-}
-
-/* ANIMATION CLASSES */
-.fade-in{
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-
-.fade-in.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.hero-load{
-  opacity:0;
-  transform:translateY(25px);
-  animation:heroFade .9s ease forwards;
-}
-
-@keyframes heroFade{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* BUTTON ANIMATION */
-.btn{
-  display:inline-block;
-  background:var(--gold);
-  color:#18281e;
-  padding:10px 18px;
-  font-size:.67rem;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.07em;
-  border-radius:2px;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 4px 10px rgba(0,0,0,.18);
-}
-
-/* CARD HOVER */
-.addon{
-  background:#faf7ed;
-  border-radius:5px;
-  overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-
-.addon:hover{
-  transform:translateY(-4px);
-  box-shadow:0 6px 14px rgba(0,0,0,.15);
-}
-
-/* HEADER */
-header{
-  height:70px;
-  background:var(--light);
-  border-bottom:1px solid rgba(32,53,42,.15);
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-
-.nav{
-  height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
-}
-
-.brand img{
-  width:255px;
-  height:66px;
-  object-fit:contain;
-  object-position:left center;
-}
-
-.nav-links{
-  display:flex;
-  gap:34px;
-  font:500 .82rem var(--serif);
-}
-
-.nav-links a{
-  padding:5px 0;
-  border-bottom:2px solid transparent;
-}
-
-.nav-links a:hover,
-.nav-links a.active{
-  border-color:var(--green);
-}
-
-.phone{
-  font-weight:700;
-  color:var(--green);
-  white-space:nowrap;
-}
-
-.phone span{
-  font-size:1.05rem;
-  margin-right:8px;
-}
-
-.menu{
-  display:none;
-  border:0;
-  background:none;
-  color:var(--green);
-  font-size:1.5rem;
-}
-
-/* MOBILE NAV PANEL */
-.mobile-nav{
-  display:none;
-  flex-direction:column;
-  background:var(--light);
-  padding:20px;
-  border-bottom:1px solid rgba(0,0,0,.15);
-}
-
-.mobile-nav a{
-  padding:10px 0;
-  font-family:var(--serif);
-  font-size:1rem;
-  border-bottom:1px solid rgba(0,0,0,.1);
-}
-
-.mobile-nav.show{
-  display:flex;
-}
-
-/* HERO */
-.hero{
-  min-height:285px;
-  position:relative;
-  overflow:hidden;
-  background:#1d3b29;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(90deg,rgba(13,42,25,.91) 0%,rgba(13,42,25,.72) 30%,rgba(13,42,25,.18) 62%,rgba(13,42,25,.03) 100%),
-    url("assets/hero.jpg");
-  background-size:auto 100%,cover;
-  background-position:center,center 42%;
-  background-repeat:no-repeat;
-  filter:saturate(.95);
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,rgba(11,38,23,.35),transparent 65%);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  padding:45px 0 50px;
-  color:#fff;
-}
-
-.hero .kicker{color:#f0dfac}
-
-.hero h1{
-  font-size:clamp(2.15rem,4vw,3.3rem);
-  line-height:.96;
-  max-width:590px;
-  color:#fff;
-}
-
-.hero p.lede{
-  max-width:470px;
-  margin:12px 0 17px;
-  color:#f1eee5;
-  font:400 .94rem/1.3 var(--serif);
-}
-
-/* SERVICES */
-.services{
-  background:var(--light);
-  padding:26px 0 23px;
-}
-
-.services-grid{
-  display:grid;
-  grid-template-columns:31% 69%;
-  gap:34px;
-}
-
-.services h2{
-  font-size:1.8rem;
-  line-height:1.02;
-  margin-bottom:8px;
-}
-
-.intro{
-  font:.8rem/1.25 var(--serif);
-  max-width:330px;
-  margin:0;
-}
-
-.note{
-  font:.72rem/1.25 var(--serif);
-  font-style:italic;
-  color:#59635b;
-  max-width:330px;
-  margin:12px 0 0;
-}
-
-.service-row{
-  display:grid;
-  grid-template-columns:64px 1fr 155px;
-  gap:15px;
-  align-items:center;
-  padding:7px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.service-row:first-child{padding-top:0}
-
-.icon{
-  width:64px;
-  height:64px;
-  border-radius:8px;
-  background:var(--green);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-  flex-shrink:0;
-}
-
-.icon img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-.service-row h3{
-  font-size:.85rem;
-  margin-bottom:3px;
-}
-
-.service-row p{
-  margin:0;
-  font:.67rem/1.16 var(--serif);
-  max-width:520px;
-}
-
-.price{color:var(--green)}
-.price small{display:block;font:.59rem var(--serif)}
-.price strong{display:block;font:600 1.08rem/1.05 var(--serif)}
-
-/* ADDONS */
-.addons{
-  background:var(--sage);
-  padding:22px 0 24px;
-}
-
-.addons-grid{
-  display:grid;
-  grid-template-columns:29% repeat(3,1fr);
-  gap:18px;
-}
-
-.addons-title h2{
-  font-size:1.55rem;
-  line-height:.95;
-  margin-bottom:7px;
-}
-
-.addons-title p{
-  font:.74rem/1.2 var(--serif);
-  max-width:260px;
-  margin:0;
-}
-
-.addon-photo{
-  height:70px;
-  background:linear-gradient(135deg,#71815f,#d3d9c7);
-  position:relative;
-}
-
-.addon:nth-child(3) .addon-photo{
-  background:linear-gradient(135deg,#65452d,#a07345);
-}
-
-.addon:nth-child(4) .addon-photo{
-  background:linear-gradient(135deg,#87938a,#d9ded8);
-}
-
-.addon-photo::after{
-  content:"Photo coming soon";
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  background:rgba(20,48,31,.23);
-  font-size:.62rem;
-  font-weight:700;
-}
-
-.addon-body{
-  padding:8px 11px 10px;
-}
-
-.addon h3{
-  font-size:.78rem;
-  margin-bottom:3px;
-}
-
-.addon p{
-  font:.61rem/1.12 var(--serif);
-  margin:0 0 5px;
-}
-
-.addon-price{
-  font:700 .62rem var(--serif);
-  color:var(--green);
-}
-
-/* WORK */
-.work{
-  background:var(--deep);
-  color:#fff;
-  padding:25px 0 27px;
-}
-
-.work-grid{
-  display:grid;
-  grid-template-columns:29% 1fr;
-  gap:32px;
-  align-items:center;
-}
-
-.work .kicker{color:#ddc88e}
-
-.work h2{
-  color:#fff;
-  font-size:1.9rem;
-  line-height:1;
-  margin-bottom:8px;
-}
-
-.work p{
-  font:.74rem/1.2 var(--serif);
-  max-width:310px;
-  margin:0;
-  color:#e5e9df;
-}
-
-.gallery-placeholder{
-  height:116px;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:4px;
-  background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-  display:grid;
-  place-items:center;
-  text-align:center;
-  font-family:var(--serif);
-  color:#e9ede5;
-}
-
-.gallery-placeholder strong{
-  display:block;
-  font-size:1rem;
-  margin-bottom:3px;
-}
-
-/* PROCESS */
-.process{
-  background:var(--light);
-  padding:22px 0 24px;
-}
-
-.process-grid{
-  display:grid;
-  grid-template-columns:27% 73%;
-  gap:28px;
-  align-items:center;
-}
-
-.process h2{
-  font-size:1.7rem;
-  line-height:1;
-  margin-bottom:5px;
-}
-
-.process-intro{
-  font:.7rem var(--serif);
-  margin:0;
-}
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.step{
-  display:grid;
-  grid-template-columns:35px 1fr;
-  gap:8px;
-}
-
-.step-icon{
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  background:var(--green);
-  color:#fff;
-  display:grid;
-  place-items:center;
-}
-
-.step h3{
-  font-size:.72rem;
-  margin:1px 0 3px;
-}
-
-.step p{
-  font:.59rem/1.15 var(--serif);
-  margin:0;
-}
-
-/* FAQ */
-.faq{
-  background:var(--light);
-  padding:28px 0 32px;
-}
-
-.faq-wrap h2{
-  font-size:1.7rem;
-  margin-bottom:12px;
-}
-
-.faq-item{
-  margin-bottom:18px;
-  max-width:700px;
-}
-
-.faq-item h3{
-  font-size:.9rem;
-  margin:0 0 4px;
-  color:var(--green);
-}
-
-.faq-item p{
-  font:.72rem/1.3 var(--serif);
-  margin:0;
-  color:#3a4a3f;
-}
-
-  
-/* CONTACT */
-.contact{
-  background:var(--green);
-  color:#fff;
-  padding:13px 0;
-}
-
-.contact-grid{
-  display:grid;
-  grid-template-columns:1.3fr 1fr .75fr;
-  align-items:center;
-  gap:25px;
-}
-
-.contact h2{
-  font-size:1rem;
-  color:#fff;
-  margin-bottom:2px;
-}
-
-.contact p{
-  font:.64rem/1.25 var(--serif);
-  margin:0;
-  color:#e1e7df;
-}
-
-.contact-main{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
-.details{
-  font-size:.7rem;
-}
-
-.details div{
-  margin:2px 0;
-}
-
-.tagline{
-  border-left:1px solid rgba(255,255,255,.28);
-  padding-left:24px;
-  font:.8rem var(--serif);
-  font-style:italic;
-  text-align:center;
-  color:#e3e7df;
-}
-
-/* FOOTER */
-footer{
-  background:#10251a;
-  color:#d5ddd5;
-  padding:13px 0;
-  font-size:.62rem;
-}
-
-.footer{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-
-.footer-brand{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-family:var(--serif);
-  font-weight:600;
-}
-
-.footer-brand img{
-  width:29px;
-  height:29px;
-  object-fit:contain;
-}
-
-.footer-links{
-  display:flex;
-  gap:22px;
-}
-
-.footer-links a:hover{
-  color:#fff;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .nav-links{gap:16px}
-  .services-grid,
-  .addons-grid,
-  .work-grid,
-  .process-grid{
-    grid-template-columns:1fr;
-  }
-  .contact-grid{
-    grid-template-columns:1fr 1fr;
-  }
-  .tagline{display:none}
-}
-
-@media(max-width:680px){
-  .wrap{width:calc(100% - 30px)}
-  header,.nav{height:62px}
-  .brand img{width:210px;height:58px}
-  .nav-links,.phone{display:none}
-  .menu{
-    display:block;
-  }
-  .hero{min-height:390px}
-  .hero-content{padding:55px 0 42px}
-  .hero h1{font-size:2.45rem}
-  .service-row{grid-template-columns:64px 1fr}
-  .price{grid-column:2}
-  .steps{grid-template-columns:1fr 1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .footer{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .footer-links{
-    gap:13px;
-    flex-wrap:wrap;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cemetery Revival NC</title>
+
+    <style>
+        /* --- COLOR PALETTE --- */
+        :root {
+            --sage: #A9B8A5;
+            --sage-dark: #7C8F7A;
+            --gray-light: #E7E7E7;
+            --gray-dark: #4A4A4A;
+            --white: #FFFFFF;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            background: var(--white);
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            background: url('assets/hero.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(169, 184, 165, 0.35);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin: 10px 0 20px;
+        }
+
+        .btn {
+            background: var(--sage-dark);
+            color: var(--white);
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+
+        /* --- SECTION STYLES --- */
+        section {
+            padding: 50px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--sage-dark);
+        }
+
+        /* --- GALLERY --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        /* --- SERVICES GRID --- */
+        .services {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media (min-width: 700px) {
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .service-box {
+            background: var(--gray-light);
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .service-box h3 {
+            margin-top: 0;
+            color: var(--sage-dark);
+            font-size: 1.3rem;
+        }
+
+        /* --- PRICING --- */
+        .pricing-list {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2.2rem;
+        }
+
+        /* --- ABOUT --- */
+        .about {
+            background: var(--sage);
+            padding: 50px 20px;
+            text-align: center;
+            color: var(--gray-dark);
+            font-size: 1.1rem;
+        }
+
+        /* --- CONTACT FORM --- */
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 14px;
+            border: 1px solid var(--gray-dark);
+            border-radius: 6px;
+            font-size: 1.1rem;
+        }
+
+        textarea {
+            height: 140px;
+        }
+
+        button.btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--gray-light);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home">
-      <img src="assets/logo.png" alt="Cemetery Revival NC">
-    </a>
-
-    <nav class="nav-links">
-      <a class="active" href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#work">Our Work</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <a class="phone" href="tel:+13368189140">
-      <span>☎</span>(336) 818-9140
-    </a>
-
-    <button class="menu" aria-label="Menu">☰</button>
-  </div>
-
-  <!-- MOBILE NAV PANEL -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#work">Our Work</a>
-    <a href="#contact">Contact</a>
-    <a href="#faq">FAQ</a>
-  </div>
-</header>
-
-<main id="home">
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-content hero-load">
-    <p class="kicker">Reviving cemeteries one headstone at a time</p>
-    <h1>Professional Headstone &<br>Monument Cleaning</h1>
-    <a class="btn" href="quote.html">Get a Quote →</a>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services fade-in" id="services">
-  <div class="wrap services-grid">
-    <div>
-      <p class="kicker">Services & Pricing</p>
-      <h2>Our Services</h2>
-      <p class="intro">
-        We use cleaning products and methods that have been tested and proven safe for historic stone, while still delivering the best possible results — no hard-bristle brushes, no metal scrapers, no pressure washing.
-      </p>
-    </div>
-
-    <div>
-      <div class="service-row">
-        <div class="icon">
-          <img src="assets/service-headstone.jpg" alt="Cleaned headstone">
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Cemetery Revival NC</h1>
+            <p>Headstone & Monument Cleaning in Surry & Wilkes County</p>
+            <a class="btn" href="#contact">Request Service</a>
         </div>
-        <div><h3>Headstone & Monument Cleaning</h3></div>
-        <div class="price">
-          <strong>$75–$150</strong>
-          <small>varies by size & condition</small>
+    </div>
+
+    <!-- BEFORE & AFTER -->
+    <section>
+        <h2>Before & After Restoration</h2>
+        <div class="gallery">
+            <img src="assets/before1.jpg" alt="">
+            <img src="assets/after1.jpg" alt="">
+            <img src="assets/before2.jpg" alt="">
+            <img src="assets/after2.jpg" alt="">
+            <img src="assets/before3.jpg" alt="">
+            <img src="assets/after3.jpg" alt="">
         </div>
-      </div>
+    </section>
 
-      <div class="service-row">
-        <div class="icon">◆</div>
-        <div>
-          <h3>Flat Marker Cleaning</h3>
-          <p>For flat, flush, or ground-level grave markers, which collect grass clippings, dirt, and staining differently than upright headstones.</p>
+    <!-- SERVICES -->
+    <section>
+        <h2>Services</h2>
+        <div class="services">
+
+            <div class="service-box">
+                <h3>Headstone Cleaning</h3>
+                Gentle, respectful restoration of single and double markers.
+            </div>
+
+            <div class="service-box">
+                <h3>Monument Cleaning</h3>
+                Professional care for larger memorials and family monuments.
+            </div>
+
+            <div class="service-box">
+                <h3>Grave Site Care</h3>
+                Seasonal cleanup and maintenance for a well‑kept resting place.
+            </div>
+
+            <div class="service-box">
+                <h3>Digital Memorial Pages (QR/NFC)</h3>
+                Beautiful mobile‑friendly memorials accessible by QR or NFC tag.
+                <br><br>
+                <a class="btn" href="examples.html">View Example Memorials</a>
+            </div>
+
         </div>
-        <div class="price"><strong>$40</strong></div>
-      </div>
+    </section>
 
-      <div class="service-row">
-        <div class="icon">
-          <img src="assets/service-maintenance.png" alt="Annual maintenance">
+    <!-- PRICING -->
+    <section>
+        <h2>Pricing</h2>
+        <div class="pricing-list">
+            <div>Single Headstone — $X</div>
+            <div>Double Headstone — $X</div>
+            <div>Monument — $X+</div>
+            <div>Add‑Ons — Starting at $X</div>
         </div>
-        <div>
-          <h3>Annual Maintenance Cleaning</h3>
-          <p>A yearly touch-up for a stone we've already cleaned, keeping moss and staining from building back up.</p>
-        </div>
-        <div class="price"><strong>$50</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ADDONS / ABOUT -->
-<section class="addons fade-in" id="about">
-  <div class="wrap addons-grid">
-
-    <div class="addons-title">
-      <p class="kicker">Add-ons</p>
-      <h2>Enhance Their<br>Resting Place</h2>
-      <p>Optional add-ons to make your loved one's memorial even more special.</p>
+    <!-- ABOUT -->
+    <div class="about">
+        <h2>About</h2>
+        <p>
+            Cemetery Revival NC is a locally owned service dedicated to restoring dignity to memorials 
+            across Surry and Wilkes County. Every project is handled with care, respect, and attention to detail.
+        </p>
     </div>
 
-    <article class="addon">
-      <div class="addon-photo"></div>
-      <div class="addon-body">
-        <h3>Flowers</h3>
-        <p>Fresh or silk flowers placed at the headstone.</p>
-        <div class="addon-price">Pricing coming soon →</div>
-      </div>
-    </article>
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Phone">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button class="btn" type="submit">Send Message</button>
+        </form>
+    </section>
 
-    <article class="addon">
-      <div class="addon-photo"></div>
-      <div class="addon-body">
-        <h3>Mulch Installation</h3>
-        <p>Helps maintain a clean, well-kept appearance. Subject to cemetery rules — only available for family cemeteries.</p>
-        <div class="addon-price">Pricing coming soon →</div>
-      </div>
-    </article>
-
-    <article class="addon">
-      <div class="addon-photo"></div>
-      <div class="addon-body">
-        <h3>NFC Memorial</h3>
-        <p>A digital tribute that lets family and friends view photos, stories, and memories. NFC tags are about the size of a quarter and can be tapped with a compatible phone.</p>
-        <div class="addon-price">Pricing coming soon →</div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- OUR WORK -->
-<section class="work fade-in" id="work">
-  <div class="wrap work-grid">
-    <div>
-      <p class="kicker">Our Work</p>
-      <h2>Clean Stones.<br>Real Results.</h2>
-      <p>We'll be adding photos of headstones and monuments we've cleaned here as the business grows.</p>
-    </div>
-
-    <div class="gallery-placeholder">
-      <div>
-        <strong>Our Work Gallery</strong>
-        Cleaned-stone photos coming soon.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process fade-in">
-  <div class="wrap process-grid">
-    <div>
-      <p class="kicker">Our Process</p>
-      <h2>How It Works</h2>
-      <p class="process-intro">A simple, respectful process from start to finish.</p>
-    </div>
-
-    <div class="steps">
-      <article class="step">
-        <div class="step-icon">☎</div>
-        <div><h3>1. Contact Us</h3></div>
-      </article>
-
-      <article class="step">
-        <div class="step-icon">▣</div>
-        <div><h3>2. Schedule</h3></div>
-      </article>
-
-      <article class="step">
-        <div class="step-icon">♧</div>
-        <div><h3>3. We Do the Cleaning</h3></div>
-      </article>
-
-      <article class="step">
-        <div class="step-icon">♡</div>
-        <div><h3>4. Add-ons</h3></div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact fade-in" id="contact">
-  <div class="wrap contact-grid">
-
-    <div>
-      <h2>Service Area</h2>
-      <p>We proudly serve Surry and Wilkes County, NC.</p>
-      <p><em>Just outside the area? Contact us — we may still be able to help!</em></p>
-    </div>
-
-    <div class="contact-main">
-      <a class="btn" href="quote.html">Get a Quote →</a>
-
-      <div class="details">
-        <div>☎ &nbsp;<a href="tel:+13368189140">(336) 818-9140</a></div>
-        <div>✉ &nbsp;<a id="emailLink" href="#">cemeteryrevivalnc@gmail.com</a>
-</div>
-      </div>
-    </div>
-
-    <div class="tagline">
-      Because every stone<br>has a story.
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap footer">
-
-    <div class="footer-brand">
-      <img src="assets/logo.png" alt="">
-      <span>CEMETERY REVIVAL NC</span>
-    </div>
-
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#work">Our Work</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div>© 2026 Cemetery Revival NC. All rights reserved.</div>
-
-  </div>
-</footer>
-
-<!-- JAVASCRIPT -->
-<script>
-// MOBILE MENU
-const menuBtn = document.querySelector('.menu');
-const mobileNav = document.getElementById('mobileNav');
-
-if (menuBtn && mobileNav) {
-  menuBtn.addEventListener('click', () => {
-    mobileNav.classList.toggle('show');
-  });
-
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('show');
-    });
-  });
-}
-
-// SCROLL ANIMATIONS
-const fadeElements = document.querySelectorAll('.fade-in');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, {
-  threshold: 0.2
-});
-
-fadeElements.forEach(el => observer.observe(el));
-
-  // DESKTOP EMAIL → OPEN GMAIL COMPOSE
-const emailLink = document.getElementById('emailLink');
-
-emailLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  const gmailURL = "https://mail.google.com/mail/?view=cm&fs=1&to=cemeteryrevivalnc@gmail.com";
-  window.open(gmailURL, "_blank");
-});
-</script>
+    <!-- FOOTER -->
+    <footer>
+        Cemetery Revival NC<br>
+        Surry & Wilkes County, North Carolina<br>
+        © 2026 Cemetery Revival NC
+    </footer>
 
 </body>
 </html>
