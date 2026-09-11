@@ -10,7 +10,9 @@
         :root {
             --sage: #A9B8A5;
             --sage-dark: #7C8F7A;
-            --gray-light: #E7E7E7;
+            --sage-gradient: linear-gradient(135deg, #A9B8A5, #7C8F7A);
+            --gray-light: #F2F2F2;
+            --gray-medium: #D9D9D9;
             --gray-dark: #4A4A4A;
             --white: #FFFFFF;
         }
@@ -20,14 +22,14 @@
             font-family: "Georgia", serif;
             background: var(--white);
             color: var(--gray-dark);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 65vh;
             background: url('assets/hero.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -38,7 +40,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(169, 184, 165, 0.35);
+            background: rgba(60, 75, 60, 0.45); /* deeper sage overlay */
         }
 
         .hero-content {
@@ -46,16 +48,17 @@
             z-index: 2;
             color: var(--white);
             padding: 0 20px;
+            text-shadow: 0px 2px 6px rgba(0,0,0,0.4);
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             margin: 0;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            margin: 10px 0 20px;
+            font-size: 1.3rem;
+            margin: 12px 0 25px;
         }
 
         .btn {
@@ -66,19 +69,20 @@
             text-decoration: none;
             font-size: 1.1rem;
             display: inline-block;
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
         }
 
         /* --- SECTION STYLES --- */
         section {
-            padding: 50px 20px;
+            padding: 60px 20px;
             max-width: 1100px;
             margin: auto;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            margin-bottom: 40px;
+            font-size: 2rem;
             color: var(--sage-dark);
         }
 
@@ -103,180 +107,11 @@
 
         .gallery img {
             width: 100%;
-            border-radius: 6px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
         }
 
         /* --- SERVICES GRID --- */
         .services {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        @media (min-width: 700px) {
-            .services {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .service-box {
-            background: var(--gray-light);
-            padding: 25px;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-
-        .service-box h3 {
-            margin-top: 0;
-            color: var(--sage-dark);
-            font-size: 1.3rem;
-        }
-
-        /* --- PRICING --- */
-        .pricing-list {
-            text-align: center;
-            font-size: 1.2rem;
-            line-height: 2.2rem;
-        }
-
-        /* --- ABOUT --- */
-        .about {
-            background: var(--sage);
-            padding: 50px 20px;
-            text-align: center;
-            color: var(--gray-dark);
-            font-size: 1.1rem;
-        }
-
-        /* --- CONTACT FORM --- */
-        form {
-            max-width: 600px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input, textarea {
-            padding: 14px;
-            border: 1px solid var(--gray-dark);
-            border-radius: 6px;
-            font-size: 1.1rem;
-        }
-
-        textarea {
-            height: 140px;
-        }
-
-        button.btn {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--gray-light);
-            text-align: center;
-            padding: 25px;
-            font-size: 0.95rem;
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- HERO -->
-    <div class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Cemetery Revival NC</h1>
-            <p>Headstone & Monument Cleaning in Surry & Wilkes County</p>
-            <a class="btn" href="#contact">Request Service</a>
-        </div>
-    </div>
-
-    <!-- BEFORE & AFTER -->
-    <section>
-        <h2>Before & After Restoration</h2>
-        <div class="gallery">
-            <img src="assets/before1.jpg" alt="">
-            <img src="assets/after1.jpg" alt="">
-            <img src="assets/before2.jpg" alt="">
-            <img src="assets/after2.jpg" alt="">
-            <img src="assets/before3.jpg" alt="">
-            <img src="assets/after3.jpg" alt="">
-        </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section>
-        <h2>Services</h2>
-        <div class="services">
-
-            <div class="service-box">
-                <h3>Headstone Cleaning</h3>
-                Gentle, respectful restoration of single and double markers.
-            </div>
-
-            <div class="service-box">
-                <h3>Monument Cleaning</h3>
-                Professional care for larger memorials and family monuments.
-            </div>
-
-            <div class="service-box">
-                <h3>Grave Site Care</h3>
-                Seasonal cleanup and maintenance for a well‑kept resting place.
-            </div>
-
-            <div class="service-box">
-                <h3>Digital Memorial Pages (QR/NFC)</h3>
-                Beautiful mobile‑friendly memorials accessible by QR or NFC tag.
-                <br><br>
-                <a class="btn" href="examples.html">View Example Memorials</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section>
-        <h2>Pricing</h2>
-        <div class="pricing-list">
-            <div>Single Headstone — $X</div>
-            <div>Double Headstone — $X</div>
-            <div>Monument — $X+</div>
-            <div>Add‑Ons — Starting at $X</div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <div class="about">
-        <h2>About</h2>
-        <p>
-            Cemetery Revival NC is a locally owned service dedicated to restoring dignity to memorials 
-            across Surry and Wilkes County. Every project is handled with care, respect, and attention to detail.
-        </p>
-    </div>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <form>
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Phone">
-            <input type="email" placeholder="Email">
-            <textarea placeholder="Message"></textarea>
-            <button class="btn" type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        Cemetery Revival NC<br>
-        Surry & Wilkes County, North Carolina<br>
-        © 2026 Cemetery Revival NC
-    </footer>
-
-</body>
-</html>
