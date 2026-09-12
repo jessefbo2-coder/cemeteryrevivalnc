@@ -226,15 +226,66 @@
 
     <section>
         <h2>Before & After Restoration</h2>
-        <div class="gallery">
-            <img src="assets/before1.jpg">
-            <img src="assets/after1.jpg">
-            <img src="assets/before2.jpg">
-            <img src="assets/after2.jpg">
-            <img src="assets/before3.jpg">
-            <img src="assets/after3.jpg">
-        </div>
-    </section>
+       <section id="restoration-gallery">
+  <h2>Before & After Restoration</h2>
+
+  <div class="fade-pair">
+    <img src="assets/wyatt-before.jpg" class="before" alt="Wanda Hope Wyatt before cleaning">
+    <img src="assets/wyatt-after.jpg" class="after" alt="Wanda Hope Wyatt after cleaning">
+  </div>
+
+  <div class="fade-pair">
+    <img src="assets/martin-before.jpg" class="before" alt="Martin marker before cleaning">
+    <img src="assets/martin-after.jpg" class="after" alt="Martin marker after cleaning">
+  </div>
+
+  <div class="fade-pair">
+    <img src="assets/brown-before.jpg" class="before" alt="Brown family stone before cleaning">
+    <img src="assets/brown-after.jpg" class="after" alt="Brown family stone after cleaning">
+  </div>
+</section>
+
+<style>
+  #restoration-gallery {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .fade-pair {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .fade-pair img {
+    width: 100%;
+    border-radius: 8px;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .fade-pair .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .fade-pair.active .after {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.fade-pair').forEach(pair => {
+    pair.addEventListener('click', () => {
+      pair.classList.toggle('active');
+    });
+  });
+</script>
+
 
     <div class="services-section">
         <h2>Services</h2>
