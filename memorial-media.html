@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorial Media</title>
+
+<style>
+    :root {
+        --sage: #9CAF88;
+        --sage-dark: #6E7F63;
+        --sage-deep: #4F5F47;
+        --cream: #F7F5EF;
+        --white: #FFFFFF;
+        --gray-dark: #3A3A3A;
+    }
+
+    body {
+        margin: 0;
+        font-family: Georgia, serif;
+        background: var(--cream);
+        color: var(--gray-dark);
+    }
+
+    header {
+        background: var(--sage-dark);
+        color: var(--white);
+        padding: 25px;
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        text-align: center;
+        color: var(--sage-deep);
+        font-size: 2rem;
+        margin: 40px 0 20px;
+    }
+
+    .gallery {
+        max-width: 1100px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    @media (min-width: 700px) {
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1000px) {
+        .gallery {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .gallery img, .gallery video {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    }
+
+    nav {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    nav a {
+        background: var(--sage-dark);
+        color: var(--white);
+        padding: 12px 25px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        margin: 10px;
+        display: inline-block;
+    }
+
+    footer {
+        background: var(--sage-dark);
+        color: var(--white);
+        text-align: center;
+        padding: 25px;
+        margin-top: 40px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    John Smith — Media Collection
+</header>
+
+<h2>Photos</h2>
+<div class="gallery">
+    <img src="assets/john-photo1.jpg" alt="Photo 1">
+    <img src="assets/john-photo2.jpg" alt="Photo 2">
+    <img src="assets/john-photo3.jpg" alt="Photo 3">
+</div>
+
+<h2>Videos</h2>
+<div class="gallery">
+    <video controls>
+        <source src="assets/john-video1.mp4" type="video/mp4">
+    </video>
+
+    <video controls>
+        <source src="assets/john-video2.mp4" type="video/mp4">
+    </video>
+</div>
+
+<nav>
+    <a href="memorial-about.html">Back to About</a>
+</nav>
+
+<footer>
+    Memorial Page Created by Cemetery Revival NC
+</footer>
+
+</body>
+</html>
